@@ -1,14 +1,27 @@
 while (true) {
-    music.setVolume(1000)
     console.log("light level: " + input.lightLevel() + " Sound level: " + input.soundLevel())
-    if (input.soundLevel() > 180) {
-        console.log("Someone just broke in, DEFEND UR HOUSE!!!")
+    if (input.soundLevel() > 100 + input.lightLevel() && 100 + input.lightLevel() > 5) {
+        console.log("Loud noise detected, keep you're lights off to stay safe!")
+        light.setBrightness(1000)
         light.setAll(color.rgb(255, 0, 0))
-        music.siren.playUntilDone()
+        pause(500)
         light.clear()
-        light.setAll(color.rgb(255, 255, 255))
-    } else if (input.lightLevel() > 5) {
-        light.setAll(color.rgb(255, 255, 0))
+        pause(500)
+        light.setAll(color.rgb(255, 0, 0))
+        pause(500)
+        light.setAll(color.rgb(255, 0, 0))
+    }
+    
+    if (input.soundLevel() > 100) {
+        console.log("There was a loud noise! Your lights are already off, make sure you're safe!")
+        light.setBrightness(1000)
+        light.setAll(color.rgb(255, 0, 0))
+        pause(500)
+        light.clear()
+        pause(500)
+        light.setAll(color.rgb(255, 0, 0))
+        pause(500)
+        light.setAll(color.rgb(255, 0, 0))
     }
     
 }
